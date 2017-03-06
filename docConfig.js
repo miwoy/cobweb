@@ -1,6 +1,6 @@
 module.exports = {
     //扫描的文件路径
-    paths: ['routes/'],
+    paths: ['./'],
     //demoDir:"input/demo/",
     //文档页面输出路径
     outdir: 'doc/',
@@ -37,5 +37,6 @@ module.exports = {
     //     paths : ['input/code/ui/uicode.js'],
     //     link : ['http://code.jquery.com/jquery-1.11.0.min.js'] 
     // }
+    //smartDoc ./
 };
 

@@ -1,3 +1,8 @@
+/**
+ * 服务模板
+ * <br/>prefix: /api/template
+ * @module 服务模板
+ */
 // const Koa = require('koa');
 import Koa from "koa";
 import views from "koa-views";

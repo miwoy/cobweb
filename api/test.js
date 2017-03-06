@@ -2,20 +2,20 @@ import Router from "koa-router";
 
 /**
  * 会员管理接口
- * <br/>prefix: /user
- * @class user
+ * <br/>prefix: /test
+ * @class test
  */
 let router = new Router();
 
 
 /**
  * 获取会员列表 
- * #### POST: /api/a/user/getUsers
- * @method getUsers
- * @param {Object} config A config object
- * @param {Function} config.callback A callback function on the config object
- * @param {Boolean} [extra=false] Do extra, optional work
- * @return {Object} Returns the constructed target object
+ * #### POST: /api/template/test/getTests
+ * @method getTests
+ * @param {Object} obj 这是一个对象参数例子
+ * @param {Function} obj.callback 这是一个内嵌对象例子
+ * @param {Boolean} [extra=false] 这是一个选填默认值参数
+ * @return {Object} Returns 这是返回值例子
  * ````
  *	{
  *		errno: 0,

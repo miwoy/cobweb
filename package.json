@@ -11,6 +11,7 @@
   "dependencies": {
     "continuation-local-storage": "^3.1.7",
     "debug": "^2.2.0",
+    "express": "^4.15.0",
     "koa": "^2.0.0",
     "koa-bodyparser": "^2.0.1",
     "koa-convert": "^1.2.0",
