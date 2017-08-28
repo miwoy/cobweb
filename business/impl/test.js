@@ -8,17 +8,17 @@ import uuid from 'node-uuid';
  */
 export default {
     getTests: async function(db) {
-        let tests = await db.test.find().exec();
+        // let tests = await db.test.find().exec();
 
-        return tests;
+        return "This is test list.";
     },
     setTest: async function(db) {
-    	let r = await db.test.create({
-    		id: uuid.v1(),
-    		name: "test"
-    	}).exec();
+    	// let r = await db.test.create({
+    	// 	id: uuid.v1(),
+    	// 	name: "test"
+    	// }).exec();
 
-    	return r;
+    	return "Set success.";
     },
     begin: async function(db) {
         let r = await db.test.create({
