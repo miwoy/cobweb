@@ -13,7 +13,7 @@ describe("tests", function() {
 			return test.getList().should.be.fulfilled().finally.equal(null);
 		});
 		it("should is error", function() {
-			return test.getList().rejectedWith(Error, { message: "ArgsError" });
+			return test.getList().should.be.rejectedWith(Error, { message: "ArgsError" });
 		});
 
 	});
@@ -21,7 +21,7 @@ describe("tests", function() {
 		var url = "http://localhost:3000";
 		it("should get object", function(done) {
 			request(url)
-				.get("/user/getProfile")
+				.get("/api/test/getTests")
 				.set("Authorization", "token")
 				.expect("Content-Type", /json/)
 				.expect(200) //Status code
