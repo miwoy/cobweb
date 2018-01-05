@@ -1,35 +1,77 @@
 import fs from "fs";
 import path from "path";
-import factoryMaster from "node-entities";
-import common from "../lib/common";
+import Sequelize from "sequelize";
+import uuid from "node-uuid";
+import debugFactory from "debug";
+// import { encrypt } from "../lib/common";
+import cls from "continuation-local-storage";
+
+const debug = debugFactory("cobweb:models");
+
+// 构建sequelize命名空间
+const namespace = cls.createNamespace("cobweb-namespace");
+
+let opts = conf.mysql;
+
+/**
+ * 全局配置define参数
+ * @type {Object}
+ */
+opts.define = {
+	timestamps: true,
+	paranoid: true,
+	freezeTableName: true,
+	id: {
+		type: Sequelize.STRING(36),
+		primaryKey: true,
+		unique: true
+	},
+	hooks: {
+		beforeCreate: function(data) {
+			if (data)
+				data.id = data.id || uuid.v4();
+		}
+	}
+};
+
+Sequelize.cls = namespace; // 启用CLS
+let sequelize = new Sequelize(conf.mysql.database, conf.mysql.username, conf.mysql.password, opts);
 
 const basename = path.basename(module.filename);
-let models;
+
+let dbs = {
+	Sequelize: Sequelize,
+	sequelize: sequelize
+};
+
+let models = [];
 
 
-if (!models) {
-    models = {};
-    fs
-        .readdirSync(__dirname)
-        .filter(function(file) {
-            return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-        })
-        .forEach(function(file) {
-            let _Class = require(path.join(__dirname, file));
-            let prop = common.util.convertP2C(file.split(".js")[0])
-            models[prop] = _Class;
-            // Object.defineProperty(models, prop, {
-            //     get: function() {
-            //         return new _Class({
-            //             db: db,
-            //             common: common
-            //         });
-            //     }
-            // });
-        });
-}
-// 初始化，并返回工厂构造器 
-let Factory = factoryMaster.init(conf.mysql, models);
+fs
+	.readdirSync(__dirname)
+	.filter(function(file) {
+		return (file.indexOf(".") !== 0) && (file !== basename);
+	})
+	.forEach(function(file) {
 
-let factory = new Factory();
-export default factoryMaster.export();
+		let model = sequelize.import(path.join(__dirname, file));
+		// 包裹model
+		models.push(model);
+		dbs[model.name] = model;
+		debug(model.name);
+	});
+
+models.forEach(model => {
+	model.associate && model.associate(dbs);
+	// model.associate(dbs);
+});
+sequelize.sync({
+	force: false
+}).then(function() {
+	debug("sequelize sync success.");
+}).catch(function(err) {
+	debug("sequelize sync error:", err);
+});
+
+
+export default dbs;

@@ -1,17 +1,23 @@
+
 ## bin
 自动化脚本，启动脚本
 
-## api
+## routes
 
-对外api配置路由表
+路由表配置
 
-## business
-业务逻辑
+###### routes/api
 
-## ref
-其他第三方服务封装
+webApi 以JSON形式返回数据
+
+###### routes/pages
+
+使用ejs模板引擎返回渲染页面
+
+## application
+业务逻辑层
 
 ## lib
-基础设施
+基础设施 infrastructure
 
 app.js // 项目入口

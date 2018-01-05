@@ -3,34 +3,40 @@
  * <br/>prefix: /api/template
  * @module 服务模板
  */
-// const Koa = require('koa');
+import "./lib/global";
+import path from "path";
 import Koa from "koa";
+import pub from "koa-static";
 import views from "koa-views";
 import convert from "koa-convert";
-import json from "koa-json";
-import onerror from "koa-onerror";
+// import onerror from "koa-onerror";
 import bodyparser from "koa-bodyparser";
-import logger from "koa-logger";
-import initGlobal from "./lib/global";
-import middleware from "./lib/middleware";
-import debugMaster from "debug";
+import logger from "koa-logger4miwoy";
 
-const debug = debugMaster("template")
+import middleware from "./lib/middleware";
+import Debug from "debug";
+
+
+const debug = Debug("cobweb");
 
 const app = new Koa();
-const router = require('./api');
+const router = require("./routes");
 
 /**
  * BEGIN:middlewares
  */
 
 app.use(convert(bodyparser())); // 格式化body
-// app.use(convert(json())); // json转化
 app.use(convert(logger())); // 日志打印
-app.use(middleware.inject);
+
 app.use(middleware.cors); // 设置跨域访问
 app.use(middleware.returnObject);
 app.use(middleware.exceptionHandler);
+app.use(pub(path.join(__dirname, "./src")));
+app.use(views(path.join(__dirname, "./views"), {
+	extension: "ejs"
+}));
+
 // routes  初始化路由，路由层由每次访问时动态注入业务实例
 app.use(router.routes(), router.allowedMethods());
 /**
@@ -38,8 +44,8 @@ app.use(router.routes(), router.allowedMethods());
  */
 
 // 异常处理
-app.on('error', function(err, ctx) {
-    debug('server error', err)
+app.on("error", function(err) {
+	debug("server error", err);
 });
 
 

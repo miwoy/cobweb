@@ -2,6 +2,10 @@
 # Logs
 log
 *.log
+dist
+build
+coverage
+mochawesome-report
 doc
 .idea
 output
