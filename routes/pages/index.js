@@ -1,6 +1,7 @@
 import Router from "koa-router";
 import fs from "fs";
 import path from "path";
+import marked from "marked";
 
 
 
@@ -19,9 +20,20 @@ let router = new Router({
  * 127.0.0.1:3000
  */
 router.get("/", async(ctx) => {
-	await ctx.render("index", {
-		title: "Hi EJS"
+
+	marked.setOptions({
+		renderer: new marked.Renderer(),
+		gfm: true,
+		tables: true,
+		breaks: false,
+		pedantic: false,
+		sanitize: false,
+		smartLists: true,
+		smartypants: false
 	});
+	let md = fs.readFileSync("./README.md", {encoding: "utf8"});
+	ctx.set("Content-Type", "text/html;charset=utf-8");
+	ctx.body = marked(md);
 });
 
 fs
