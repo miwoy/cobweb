@@ -13,7 +13,7 @@ cobweb是一个小型轻量级的基于koa2框架的web脚手架。脚手架中�
 ## 开始
 
 1. 安装依赖
-<pre>npm install</pre>
+<pre>npm install --registry=https://registry.npm.taobao.org</pre>
 2. 修改lib/config/dev_confnig.js 中mysql配置，改成自己的mysql
 <pre>
    mysql: {
