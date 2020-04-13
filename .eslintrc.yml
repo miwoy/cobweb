@@ -8,6 +8,7 @@ extends: 'eslint:recommended'
 parser: babel-eslint
 parserOptions:
   sourceType: module
+  ecmaVersion: 8
 globals:
   conf: true
   RedisRefError: true
