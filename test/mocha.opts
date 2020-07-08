@@ -1,0 +1,3 @@
+--reporter markdown
+--recursive
+--require @babel/register

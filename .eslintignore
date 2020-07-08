@@ -1,0 +1,6 @@
+bin
+coverage
+mochawesome-report
+node_modules
+build
+dist

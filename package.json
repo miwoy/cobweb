@@ -1,0 +1,76 @@
+{
+  "name": "cobweb",
+  "description": "nodejs 脚手架",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=cobweb:* node bin/www",
+    "dev": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=cobweb:* ./node_modules/nodemon/bin/nodemon.js bin/www",
+    "eslint": "node node_modules/eslint/bin/eslint.js ./ --fix --ext js",
+    "build": "sh bin/build.sh",
+    "test": "DEBUG=cobweb:*  NODE_ENV=mocha npx nyc --reporter=text-summary --include 'routes/**/*.js' --include 'application/**/*.js' mocha",
+    "apidoc": "npx apidoc -i lib/apiDoc/ -i routes/  -o src/docs",
+    "seeder": "NODE_PATH=./ DEBUG=cobweb:* node ./seeder"
+  },
+  "dependencies": {
+    "continuation-local-storage": "^3.2.0",
+    "debug": "^2.2.0",
+    "dottie": "^2.0.2",
+    "ejs": "^2.5.7",
+    "fundebug-nodejs": "0.0.9",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "3",
+    "koa-json": "^1.1.1",
+    "koa-logger": "^3.2.1",
+    "koa-logger4miwoy": "^1.0.0",
+    "koa-router": "^7.0.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.2.1",
+    "koa2-cors": "^2.0.6",
+    "lodash": "^4.17.15",
+    "marked": "^0.3.19",
+    "moment": "^2.24.0",
+    "mysql2": "^2.1.0",
+    "node-xlsx": "^0.7.1",
+    "nodemailer": "^6.4.8",
+    "qs": "^6.9.4",
+    "redis": "^2.6.2",
+    "request": "^2.88.2",
+    "sequelize": "^5.21.11",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.22.0",
+    "eslint": "^7.1.0",
+    "mocha": "^7.1.1",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.0.1",
+    "should": "^8.0.2",
+    "supertest": "^4.0.2"
+  },
+  "mocha": {
+    "reporter": "spec",
+    "recursive": true,
+    "require": ""
+  },
+  "apidoc": {
+    "name": "",
+    "description": "",
+    "title": "cobweb nodejs 脚手架",
+    "url": "http://localhost:3000",
+    "sampleUrl": "http://localhost:3000",
+    "preview-url": "http://localhost:3000/docs/index.html",
+    "template": {
+      "forceLanguage": "zh_cn",
+      "withCompare": true,
+      "withGenerator": true,
+      "aloneDisplay": false
+    },
+    "header": {
+      "title": "介绍",
+      "filename": "./lib/apiDoc/header.md"
+    },
+    "order": []
+  }
+}
