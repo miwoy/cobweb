@@ -8,8 +8,7 @@ const path = require("path");
 const Koa = require("koa");
 const pub = require("koa-static");
 const views = require("koa-views");
-const convert = require("koa-convert");
-const bodyparser = require("koa-bodyparser");
+const bodyparser = require("koa-body");
 const logger = require("koa-logger4miwoy");
 const middleware = require("./lib/middleware");
 const Debug = require("debug");
@@ -20,8 +19,16 @@ const router = require("./routes");
 /**
  * BEGIN:middlewares
  */
-app.use(convert(bodyparser())); // 格式化body
-app.use(convert(logger())); // 日志打印
+app.use(bodyparser({
+	formidable:{
+		uploadDir: conf.uploadDir,
+		hash: "md5",
+		keepExtensions: true
+	},    //This is where the files would come
+	multipart: true,
+	urlencoded: true
+ })); // 格式化body
+app.use(logger()); // 日志打印
 
 app.use(middleware.cors); // 设置跨域访问
 app.use(middleware.returnObject);

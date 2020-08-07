@@ -32,11 +32,11 @@ let run = async function() {
 	}
 
     if (process.argv[2] === "all") {
-		return await models.sequelize.transaction(async (t1)=> {
+		return await models.sequelize.transaction(async ()=> {
 			let keys = Object.keys(seeder)
 			await (async function(){
 				for(let i=0;i<keys.length;i++) {
-					await seeder[keys[i]](t1)
+					await seeder[keys[i]]()
 				}
 			})()
 		})

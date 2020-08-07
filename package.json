@@ -13,14 +13,14 @@
     "seeder": "NODE_PATH=./ DEBUG=cobweb:* node ./seeder"
   },
   "dependencies": {
-    "continuation-local-storage": "^3.2.0",
+    "cls-hooked": "^4.2.2",
     "debug": "^2.2.0",
     "dottie": "^2.0.2",
     "ejs": "^2.5.7",
     "fundebug-nodejs": "0.0.9",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.11.0",
-    "koa-bodyparser": "3",
+    "koa-body": "^4.2.0",
     "koa-json": "^1.1.1",
     "koa-logger": "^3.2.1",
     "koa-logger4miwoy": "^1.0.0",

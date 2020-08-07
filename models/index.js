@@ -7,8 +7,7 @@ const {
 } = require("sequelize");
 const uuid = require("uuid");
 const debugFactory = require("debug");
-const cls = require("continuation-local-storage");
-
+const cls = require("cls-hooked");
 const debug = debugFactory("cobweb:models");
 
 // 构建sequelize命名空间
