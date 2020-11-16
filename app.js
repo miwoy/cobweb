@@ -12,7 +12,7 @@ const bodyparser = require("koa-body");
 const logger = require("koa-logger4miwoy");
 const middleware = require("./lib/middleware");
 const Debug = require("debug");
-const debug = Debug("cobweb");
+const debug = Debug("version.bfh.zdbx.net");
 const app = new Koa();
 const router = require("./routes");
 
@@ -35,7 +35,7 @@ app.use(middleware.returnObject);
 app.use(middleware.exceptionHandler);
 app.use(pub(path.join(__dirname, "./src")));
 app.use(views(path.join(__dirname, "./views"), {
-	extension: "ejs"
+	extension: "jade"
 }));
 
 // routes  初始化路由，路由层由每次访问时动态注入业务实例
