@@ -2746,10 +2746,10 @@ node-xlsx@^0.7.1:
   dependencies:
     xlsx "^0.8.0"
 
-nodemailer@^6.4.8:
-  version "6.4.11"
-  resolved "https://registry.npm.taobao.org/nodemailer/download/nodemailer-6.4.11.tgz?cache=0&sync_timestamp=1596010606147&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnodemailer%2Fdownload%2Fnodemailer-6.4.11.tgz#1f00b4ffd106403f17c03f3d43d5945b2677046c"
-  integrity sha1-HwC0/9EGQD8XwD89Q9WUWyZ3BGw=
+nodemailer@^6.4.16:
+  version "6.4.16"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.16.tgz#5cb6391b1d79ab7eff32d6f9f48366b5a7117293"
+  integrity sha512-68K0LgZ6hmZ7PVmwL78gzNdjpj5viqBdFqKrTtr9bZbJYj6BRj5W6WGkxXrEnUl3Co3CBXi3CZBUlpV/foGnOQ==
 
 nodemon@^2.0.3, nodemon@^2.0.4:
   version "2.0.4"
