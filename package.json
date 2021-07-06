@@ -1,18 +1,20 @@
 {
-  "name": "cobweb",
+  "name": "version.bfh.zdbx.net",
   "description": "nodejs 脚手架",
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=cobweb:* node bin/www",
-    "dev": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=cobweb:* ./node_modules/nodemon/bin/nodemon.js bin/www",
+    "start": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=version.bfh.zdbx.net:* node bin/www",
+    "dev": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=version.bfh.zdbx.net:* ./node_modules/nodemon/bin/nodemon.js bin/www",
     "eslint": "node node_modules/eslint/bin/eslint.js ./ --fix --ext js",
     "build": "sh bin/build.sh",
-    "test": "DEBUG=cobweb:*  NODE_ENV=mocha npx nyc --reporter=text-summary --include 'routes/**/*.js' --include 'application/**/*.js' mocha",
+    "test": "DEBUG=version.bfh.zdbx.net:*  NODE_ENV=mocha npx nyc --reporter=text-summary --include 'routes/**/*.js' --include 'application/**/*.js' mocha",
     "apidoc": "npx apidoc -i lib/apiDoc/ -i routes/  -o src/docs",
-    "seeder": "NODE_PATH=./ DEBUG=cobweb:* node ./seeder"
+    "seeder": "NODE_PATH=./ DEBUG=version.bfh.zdbx.net:* node ./seeder",
+    "initdata": "NODE_PATH=./ ENABLE_NODE_LOG=YES DEBUG=version.bfh.zdbx.net:* node lib/scripts/initdata.js"
   },
   "dependencies": {
+    "amqplib": "^0.6.0",
     "cls-hooked": "^4.2.2",
     "debug": "^2.2.0",
     "dottie": "^2.0.2",
@@ -28,10 +30,11 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.1",
     "koa2-cors": "^2.0.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "marked": "^0.3.19",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
+    "nano": "^9.0.0",
     "node-xlsx": "^0.7.1",
     "nodemailer": "^6.4.8",
     "qs": "^6.9.4",
@@ -57,7 +60,7 @@
   "apidoc": {
     "name": "",
     "description": "",
-    "title": "cobweb nodejs 脚手架",
+    "title": "version.bfh.zdbx.net nodejs 脚手架",
     "url": "http://localhost:3000",
     "sampleUrl": "http://localhost:3000",
     "preview-url": "http://localhost:3000/docs/index.html",

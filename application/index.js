@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const common = require("../lib/common");
-const db = require("../models");
 
 const basename = path.basename(module.filename);
 let application;
@@ -18,7 +17,7 @@ if (!application) {
 		.forEach(function (file) {
 			let _export = require(path.join(__dirname, file));
 			let prop = file.split(".js")[0];
-			application[prop] = _export(db, common);
+			application[prop] = _export;
 			// Object.defineProperty(application, prop, {
 			//     get: function() {
 			//         return new _Class({
